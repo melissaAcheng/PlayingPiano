@@ -26,9 +26,20 @@ const keyMap = [
 	"B5",
 ];
 
+// plays pitch
 function playSound(url) {
 	new Audio(url).play();
 	console.log(url);
+}
+
+// changes key color for 300 ms
+function changeColor(pianoKey) {
+	pianoKey.style.backgroundColor = "green";
+	setTimeout(() => {
+		pianoKey.classList.contains("white-key")
+			? (pianoKey.style.backgroundColor = "white")
+			: (pianoKey.style.backgroundColor = "black");
+	}, 300);
 }
 
 pianoKeys.forEach((pianoKey, i) => {
@@ -36,7 +47,6 @@ pianoKeys.forEach((pianoKey, i) => {
 
 	pianoKey.addEventListener("click", () => {
 		playSound(newUrl);
+		changeColor(pianoKey);
 	});
 });
-
-// piano-keys/Gb5.mp3
